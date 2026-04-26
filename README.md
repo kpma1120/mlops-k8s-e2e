@@ -1,10 +1,10 @@
-## 🚢📊 MLOps Showcase — Titainic Survival Prediction Web App
-
-**An end‑to‑end MLOps pipeline: ETL → Data pipeline (ingestion, preprocessing, feature store integration, validation, versioning) → Training & experiment tracking → API backend → Model monitoring → Web UI → Testing → CI/CD → Cloud (GKE)**
+## 🐳📊 Cloud‑Hosted Kubernetes MLOps Pipeline — Classical ML Web App
 
 <div align="center">
 
-[![Python](https://img.shields.io/badge/Python-3.12.7-blue.svg)](https://www.python.org/downloads/)
+**An end‑to‑end MLOps pipeline: ETL → Data Pipeline → Training & Experiment Tracking →**<br> **API Backend → Model Monitoring → Web UI → Testing → CI/CD → Cloud (GKE)**
+
+[![Python](https://img.shields.io/badge/Python-3.12.7-3776ab.svg)](https://www.python.org/)
 [![Airflow](https://img.shields.io/badge/Apache%20Airflow-🪂-indigo.svg)](https://airflow.apache.org/)
 [![Redis](https://img.shields.io/badge/Redis-🟥-darkgreen.svg)](https://redis.io/)
 [![DVC](https://img.shields.io/badge/DVC-📦-purple.svg)](https://dvc.org/)
@@ -13,8 +13,11 @@
 [![Alibi‑Detect](https://img.shields.io/badge/Alibi--Detect-🔍-orange.svg)](https://github.com/SeldonIO/alibi-detect)
 [![Prometheus](https://img.shields.io/badge/Prometheus-📈-darkred.svg)](https://prometheus.io/)
 [![Grafana](https://img.shields.io/badge/Grafana-📊-yellow.svg)](https://grafana.com/)
-[![Flask](https://img.shields.io/badge/Flask-🖥️-black.svg)](https://flask.palletsprojects.com/)
-[![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-🔄-red.svg)](https://github.com/features/actions)
+[![Flask](https://img.shields.io/badge/Flask-🖥️-ec5800.svg)](https://flask.palletsprojects.com/)
+[![Ruff](https://img.shields.io/badge/Ruff-🐕-darkblue.svg)](https://docs.astral.sh/ruff/)
+[![Pytest](https://img.shields.io/badge/Pytest-🧪-red.svg)](https://docs.pytest.org/)
+[![Docker](https://img.shields.io/badge/Docker-🐳-cc3336.svg)](https://www.docker.com/)
+[![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-🔄-ff4b33.svg)](https://github.com/features/actions)
 [![GKE](https://img.shields.io/badge/GKE-☁️-blue.svg)](https://cloud.google.com/kubernetes-engine)
 
 </div>
@@ -32,7 +35,7 @@
   - [2.2 Services Usage](#22-services-usage)
   - [2.3 Optional: Try the Cloud‑Hosted Version (If Available)](#23-optional-try-the-cloudhosted-version-if-available)
 - [📁 3. Repository Structure](#-3-repository-structure)
-- [🧩 4. Architecture](#-4-architecture)
+- [🏗️ 4. Architecture](#️-4-architecture)
   - [4.1 Project Structure (Modules \& System Flow)](#41-project-structure-modules--system-flow)
   - [4.2 Application Flow (Runtime Interaction)](#42-application-flow-runtime-interaction)
 - [🔎 5. Logging](#-5-logging)
@@ -53,11 +56,11 @@
 
 ## 🎯 1. Project Overview
 
-The **Titanic Survival Prediction Web App** is a fully‑engineered, end‑to‑end MLOps showcase that demonstrates how a classic machine learning model can be transformed into a production‑ready, full‑stack pipeline.  
+The **Titanic Survival Prediction Web App** is a fully‑engineered, end‑to‑end MLOps showcase that demonstrates how a classical machine learning model can be transformed into a production‑ready, full‑stack pipeline.  
 It embodies the philosophy of modern MLOps by combining robust data workflows, cloud‑native orchestration, and comprehensive observability into a single cohesive system.
 
 The project illustrates the complete lifecycle of a real‑world ML application:  
-from the **data pipeline** (covering ingestion, preprocessing, feature store integration, validation, and versioning), to the **training pipeline** (model training, evaluation, and experiment tracking), to **API‑based inference services** enhanced with **model monitoring** (metrics and dashboards), and ultimately to a **dedicated Web UI layer** for user interaction.  
+from **ETL**, to the **data pipeline** (ingestion, preprocessing, feature store integration, validation, and versioning), to the **training pipeline** (model training, evaluation, and experiment tracking), to **API‑based inference services** enhanced with **model monitoring** (metrics and dashboards), and ultimately to a **dedicated Web UI layer** for user interaction.  
 This separation of concerns reflects a clean architectural principle, enabling independent delivery of backend and frontend components while maintaining scalability and clarity.
 
 At the infrastructure level, the system leverages **Kubernetes multi‑container orchestration** in a cloud serverless setting, deployed on **GKE Autopilot**.  
@@ -88,10 +91,11 @@ This showcase directly addresses enterprise challenges in operationalizing machi
 
 | Component | Technology | Description |
 |-----------|------------|-------------|
+| 🐍 **Programming** | Python | Version 3.12.7 used — ML and full-stack development|
 | 🪂 **ETL Pipeline** | Apache Airflow | Orchestrates initial extraction and loading of Titanic dataset from GCS to Postgres |
+| 🟥 **Feature Store** | Redis | Provides fast access to engineered features for training and inference |
 | 📦 **Data Versioning** | DVC | Ensures reproducible datasets and tracks data lineage |
 | ☄️ **Experiment Tracking** | Comet-ML | Tracks experiments, manages model versioning, and lifecycle logging |
-| 🟥 **Feature Store** | Redis | Provides fast access to engineered features for training and inference |
 | ⚡ **API Backend** | FastAPI | Serves trained models through RESTful inference endpoints |
 | 🔍 **Model Integrity** | Alibi‑Detect | Detects drift and monitors model behavior for reliability |
 | 📈 **Metrics Monitoring** | Prometheus | Collects real‑time system and model metrics |
@@ -116,8 +120,8 @@ This allows you to launch the full MLOps stack immediately without re‑running 
 #### **Step 1 — Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/mlops-e2e-k8s.git
-cd mlops-e2e-k8s
+git clone https://github.com/kpma1120/mlops-k8s-e2e.git
+cd mlops-k8s-e2e
 ```
 
 The repository already includes:
@@ -279,7 +283,7 @@ These endpoints allow you to experience the fully deployed version without runni
   <summary><strong>Click to expand repository tree</strong></summary>
 
 ```
-mlops-e2e-k8s/
+mlops-k8s-e2e/
 ├── .astro/                               # Astro configuration (auto-generated by `astro dev init`, further modified)
 │   └── config.yaml
 ├── .dvc/                                 # DVC internal metadata for data versioning (auto-generated by `dvc init`, further modified)
@@ -373,7 +377,7 @@ mlops-e2e-k8s/
 
 <br>
 
-## 🧩 4. Architecture
+## 🏗️ 4. Architecture
 
 ### 4.1 Project Structure (Modules & System Flow)
 
